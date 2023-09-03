@@ -42,6 +42,7 @@ INCLUDE_DIRS = [
     # Debian's suitesparse-dev installs to
     # /usr/include/suitesparse
     "/usr/include/suitesparse",
+    "sksparse/spinv",
 ]
 LIBRARY_DIRS = []
 
@@ -90,7 +91,8 @@ setup(
     ext_modules=cythonize(
         Extension(
             "sksparse.cholmod",
-            ["sksparse/cholmod.pyx"],
+            ["sksparse/spinv/cholmod_spinv.c",
+             "sksparse/cholmod.pyx"],
             include_dirs=INCLUDE_DIRS,
             library_dirs=LIBRARY_DIRS,
             libraries=["cholmod"],
